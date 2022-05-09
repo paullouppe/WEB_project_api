@@ -20,6 +20,24 @@ class CreateUsersTable extends Migration
             $table->string('role');
             $table->timestamps();
         });
+        Schema::create('elections', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('username');
+            $table->string('password');
+            $table->string('role');
+        });
+        Schema::create('participe', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('username');
+            $table->string('password');
+            $table->string('role');
+        });
+        Schema::create('candidat', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('username');
+            $table->string('password');
+            $table->string('role');
+        });
     }
 
     /**
@@ -30,5 +48,8 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        Schema::dropIfExists('elections');
+        Schema::dropIfExists('participe');
+        Schema::dropIfExists('candidat');
     }
 }
