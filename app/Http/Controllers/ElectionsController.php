@@ -21,9 +21,9 @@ class ElectionsController extends Controller
     public function showOneElection($id)
     {  
         $election["election"] = DB::table('elections')->where('id', $id)->get();
-        $election["candidats"] = DB::table('candidat')->select(array("candidat.id", "url", "score"))
-            ->join('participe', 'candidat.id', '=', 'participe.idCandidat')
-            ->join('elections', 'participe.idElection', '=', 'elections.id')
+        $election["candidats"] = DB::table('candidats')->select(array("candidats.id", "url", "score"))
+            ->join('participes', 'candidats.id', '=', 'participes.idCandidat')
+            ->join('elections', 'participes.idElection', '=', 'elections.id')
             ->where('elections.id', $id)
             ->get();
         return response()->json($election);
