@@ -33,4 +33,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('election/{id}', ['uses' => 'ElectionsController@delete']);
   
     $router->put('election/{id}', ['uses' => 'ElectionsController@update']);
+
+    //candidats
+    $router->put('candidat/{id}', ['uses' => 'CandidatsController@update']);
 });
