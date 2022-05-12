@@ -2,13 +2,12 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
-
 $router->get('/', function () use ($router) {
-    return "<center><h1>HOME</h1></center>";
+    return response()->json(array("documentation" => 'https://documenter.getpostman.com/view/10514373/UyxhmSBm'), 200);
 });
 
 $router->get('/api', function () use ($router) {
-    return "<center><h1>API best gif :)</h1></center>";
+    return response()->json(array("documentation" => 'https://documenter.getpostman.com/view/10514373/UyxhmSBm'), 200);
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
