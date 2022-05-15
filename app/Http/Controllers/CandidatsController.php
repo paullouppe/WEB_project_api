@@ -19,4 +19,15 @@ class CandidatsController extends Controller
         
         return response()->json($candidat, 200);
     }
+
+    public function create(Request $request){
+        $fields = $request->all();
+        $candidat = Candidat::create(array("url" => $fields["url"], "score" => 0));
+        Participe::create(array("idElection" => $fields["id"], "idCandidat" => $candidat["id"]));
+        return response()->json($candidat, 200);
+    }
+
+    public function show1Candidat($id){
+        return response()->json(Candidat::find($id));
+    }
 }

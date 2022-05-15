@@ -31,16 +31,9 @@ class ElectionsController extends Controller
 
     public function create(Request $request)
     {
-        $fields = $request->all();
-        $created_election = Elections::create(array_slice($fields, 0, 3));
+        $created_election = Elections::create($request->all());
 
-        $candidats = $fields["candidat"];
-        foreach ($candidats as $key => $value) {
-            $created_candidats = Candidat::create($value);
-            Participe::create(array("idElection" => $created_election["id"], "idCandidat" => $created_candidats["id"]));
-        }
-
-        return response()->json(array($created_election), 201);
+        return response()->json($created_election, 201);
     }
 
     public function update($id, Request $request)
@@ -51,6 +44,7 @@ class ElectionsController extends Controller
 
         return response()->json($election, 200);
     }
+    
     public function updateCandidat($id, Request $request)
     {
         $candidat = Candidats::findOrFail($id);

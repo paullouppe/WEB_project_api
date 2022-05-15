@@ -34,5 +34,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('election/{id}', ['uses' => 'ElectionsController@update']);
 
     //candidats
-    $router->put('candidat/{id}', ['uses' => 'CandidatsController@update']);
+    $router->get('candidat/{id}',  ['uses' => 'CandidatsController@show1Candidat']);
+
+    $router->post('candidat', ['uses' => 'CandidatsController@create']);
+
+    $router->put('candidat/{id}', ['uses' => 'CandidatsController@update']); 
 });
